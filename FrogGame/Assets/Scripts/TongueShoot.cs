@@ -13,6 +13,7 @@ public class TongueShoot : MonoBehaviour
         lr =GetComponent<LineRenderer>();
     }
 
+/*
     void Update()
     {
         if(Input.GetMouseButtonDown(0))
@@ -28,11 +29,16 @@ public class TongueShoot : MonoBehaviour
 
     void StartGrapple()
     {
+        if(Physics.Raycast(origin: ))
         RaycastHit hit;
+        if(Physics.Raycast())
+        {
+            
+        }
 
     }
 
-
+*/
 
 
 }

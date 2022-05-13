@@ -7,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Tongue : MonoBehaviour
 {
-/*
+
     Rigidbody rigidbody;
     Vector3 pointOfFiring = new Vector3(0f,0f,0f);
     //this is when all the elastic energy has been turned to velocity
@@ -57,5 +57,5 @@ public class Tongue : MonoBehaviour
 
         
     }
-*/
+
 }
