@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class TongueShoot : MonoBehaviour
 {
-    private LineRenderer lr;
-    private Vector3 grapplePoint;
-    public LayerMask whatIsGrappleable;
+
+    private Transform cameraReference;
+
+
 
     void Awake()
     {
-        lr =GetComponent<LineRenderer>();
     }
 
-/*
+
     void Update()
     {
+        //this defines when the grapple is shot
         if(Input.GetMouseButtonDown(0))
         {
             StartGrapple();
@@ -29,16 +30,15 @@ public class TongueShoot : MonoBehaviour
 
     void StartGrapple()
     {
-        if(Physics.Raycast(origin: ))
-        RaycastHit hit;
-        if(Physics.Raycast())
-        {
-            
-        }
 
     }
 
-*/
+    void StopGrapple()
+    {
+
+    }
+
+
 
 
 }

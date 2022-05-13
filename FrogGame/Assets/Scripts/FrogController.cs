@@ -12,12 +12,17 @@ public class FrogController : MonoBehaviour
 
     //this is so that the car knows when to drive
     private int collisionCount = 0;
+
+    
  
     public bool IsNotColliding
     {
         get { return collisionCount == 0; }
     }
 
+
+    //this should reset to zero on release
+    float jumpPower = 0f;
 
 
     void Start()
@@ -28,11 +33,34 @@ public class FrogController : MonoBehaviour
 
     void Update()
     {
-
+        FrogJump();
         FrogMove();
     }
 
     
+    void FrogJump()
+    {
+        if(Input.GetAxis("Jump")!= 0f)
+        {
+            if(jumpPower + Time.deltaTime >1f)
+            {
+                jumpPower = 1f;
+            }
+            else
+            {
+                jumpPower += Time.deltaTime;
+            }
+        }
+        else
+        {
+            if(!IsNotColliding)
+            {
+                rigidbody.AddForce(new Vector3(0f,1f,0f)*jumpPower*600f);
+                jumpPower = 0f;
+            }
+        }
+
+    }
 
     //the little forward hops
     void FrogMove()
@@ -40,7 +68,7 @@ public class FrogController : MonoBehaviour
         //transform.rotation=Quaternion.Slerp(transform.rotation,Quaternion.Euler(0f,0f,1f),Time.deltaTime);
         //rigidbody.angularVelocity = Quaternion.ToEulerAngles(Quaternion.Slerp(transform.rotation,Quaternion.Euler(0f,0f,1f),Time.deltaTime));
         float forward = Input.GetAxis("Vertical");
-        if(forward != 0f &&  !IsNotColliding)
+        if(forward != 0f &&  !IsNotColliding && jumpPower ==0f)
         {
             rigidbody.AddForce(-new Vector3(rigidbody.velocity.x,0f,rigidbody.velocity.z)*rigidbody.mass);
 
