@@ -74,7 +74,18 @@ public class FrogController : MonoBehaviour
 
             //get the forward vector and then apply upward force if colliding
             Vector3 jumpVector = new Vector3(0f,0.2f,0.8f).normalized;
+            if(forward > 0)
+            {
+                jumpVector = new Vector3(0f,0.2f,0.8f).normalized;
+
+            }
+            else if(forward < 0)
+            {
+                jumpVector = new Vector3(0f,0.2f,-0.8f).normalized;
+            }
             //this rotates this to fit the cameras direction
+
+            
             jumpVector = new Quaternion(0f,jumpDirection.rotation.y,0f,jumpDirection.rotation.w)*jumpVector;
 
             //vector = Quaternion.AngleAxis(-45, Vector3.up) * vector;

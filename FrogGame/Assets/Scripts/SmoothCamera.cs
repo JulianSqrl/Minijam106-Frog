@@ -11,6 +11,8 @@ public class SmoothCamera : MonoBehaviour
     public float followSpeed = 50f;
     public float rotationSpeed = 20f;
 
+    public Vector3 cameraVelocity = Vector3.zero;
+
 
 
 
@@ -45,7 +47,12 @@ public class SmoothCamera : MonoBehaviour
             transform.position+= difference.normalized*Time.deltaTime*followSpeed;
         }
         */
-        transform.position+= difference*Time.deltaTime*followSpeed;
+        float trueFollowSpeed = followSpeed;
+
+
+            //transform.position+= difference.normalized*Time.deltaTime*trueFollowSpeed;
+            //transform.TransformDirection(difference.normalized*Time.deltaTime*trueFollowSpeed);
+        transform.position = Vector3.SmoothDamp(transform.position,desiredPosition,ref cameraVelocity,0.3f);
 
 
 
