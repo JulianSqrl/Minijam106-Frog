@@ -27,6 +27,7 @@ public class PlayerUIController : MonoBehaviour
 
     void Update()
     {
+        
         jumpSlider.value = playerController.jumpPower;
         /*
         if(playerController.fliesCaught!= fliesCaught)
