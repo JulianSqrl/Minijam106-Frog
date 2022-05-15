@@ -62,7 +62,7 @@ public class SmoothCamera : MonoBehaviour
 
             //transform.position+= difference.normalized*Time.deltaTime*trueFollowSpeed;
             //transform.TransformDirection(difference.normalized*Time.deltaTime*trueFollowSpeed);
-        transform.position = Vector3.SmoothDamp(transform.position,desiredPosition,ref cameraVelocity,0.3f);
+        transform.position = Vector3.SmoothDamp(transform.position,desiredPosition,ref cameraVelocity,0.1f);
 
 
 

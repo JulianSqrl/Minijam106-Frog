@@ -139,6 +139,11 @@ public class FrogController : MonoBehaviour
             rigidbody.AddForce(jumpVector*10f);
             
         }
+
+        if(forward == 0 && !IsNotColliding)
+        {
+            rigidbody.AddForce(-new Vector3(rigidbody.velocity.x,0f,rigidbody.velocity.z)*rigidbody.mass);
+        }
     }
 
 
