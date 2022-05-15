@@ -89,7 +89,7 @@ public class FrogController : MonoBehaviour
             if(jumpPower + Time.deltaTime >1f)
             {
                 //this is so jump height proportional to whatever
-                jumpPower = 1f+0.5f*(fliesCaught/totalFlies);
+                jumpPower = 1f+0.5f*(fliesCaught/(totalFlies+1));
             }
             else
             {

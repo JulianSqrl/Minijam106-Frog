@@ -296,7 +296,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2196875371698242470, guid: a2e515c796aea3546bf9b6a6df7ca02b, type: 3}
       propertyPath: mouseSensitivity
-      value: 200
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 2196875371698242472, guid: a2e515c796aea3546bf9b6a6df7ca02b, type: 3}
       propertyPath: tongueSound
