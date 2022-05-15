@@ -16,9 +16,12 @@ public class Loading : MonoBehaviour
 
     public void Load(int SceneNum)
     {
+        if (LoadingScreen.activeSelf == false)
+        {
             LoadingScreen.SetActive(true);
-    
+        }
         StartCoroutine(LoadScene(SceneNum));
+    
     }
    
     IEnumerator LoadScene(int SceneNum)
