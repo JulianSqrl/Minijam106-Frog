@@ -1,19 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class FrogController : MonoBehaviour
 {
     //for UI purposes
     public int fliesCaught;
 
-
+    public AudioSource tongueSound;
 
     //ref to rigidbody
     public Rigidbody rigidbody;
 
     //this is the object that holds the driection that the player jumpps in(camera)
     public Transform jumpDirection;
+
+
+    private Vector3 lastDirection;
 
     //this is so that the car knows when to drive
     private int collisionCount = 0;
@@ -112,17 +116,9 @@ public class FrogController : MonoBehaviour
         
         float forward = Input.GetAxis("Vertical");
 
-        if(forward != 0f && IsNotColliding)
-        {
-
-            Vector3 moveVector = new Vector3(0f,0f,forward);
-            moveVector = new Quaternion(0f,jumpDirection.rotation.y,0f,jumpDirection.rotation.w)*moveVector;
-            rigidbody.AddForce(moveVector*30f*Time.deltaTime);
-        }
-
         if(forward != 0f &&  !IsNotColliding && jumpPower ==0f)
         {
-            //rigidbody.AddForce(-new Vector3(rigidbody.velocity.x,0f,rigidbody.velocity.z)*rigidbody.mass*Time.deltaTime);
+            rigidbody.AddForce(-new Vector3(rigidbody.velocity.x,0f,rigidbody.velocity.z)*rigidbody.mass);
 
             //get the forward vector and then apply upward force if colliding
             Vector3 jumpVector = new Vector3(0f,0.2f,0.8f).normalized;
@@ -135,16 +131,13 @@ public class FrogController : MonoBehaviour
             {
                 jumpVector = new Vector3(0f,0.3f,-0.8f).normalized;
             }
+            
             //this rotates this to fit the cameras direction 
             jumpVector = new Quaternion(0f,jumpDirection.rotation.y,0f,jumpDirection.rotation.w)*jumpVector;
 
-            if(rigidbody.velocity.magnitude > 8f)
-            {
-                jumpVector = new Vector3(0f,jumpVector.y,0f);
-            }
 
             
-
+            lastDirection = jumpVector;
             //vector = Quaternion.AngleAxis(-45, Vector3.up) * vector;
             rigidbody.AddForce(jumpVector*10f);
             

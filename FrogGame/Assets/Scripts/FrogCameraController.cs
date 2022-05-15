@@ -5,7 +5,7 @@ using UnityEngine;
 public class FrogCameraController : MonoBehaviour
 {
 
-    public float mouseSensitivity = 1000f;
+    public float mouseSensitivity = 100f;
 
     public Transform playerTransform;
 
