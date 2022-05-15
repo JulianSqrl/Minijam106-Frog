@@ -96,7 +96,7 @@ public class FrogController : MonoBehaviour
                 float forward = Input.GetAxis("Vertical");
 
                 rigidbody.AddForce(new Vector3(0f,1f,0f)*jumpPower*600f);
-                rigidbody.AddForce(new Quaternion(0f,jumpDirection.rotation.y,0f,jumpDirection.rotation.w)*rigidbody.transform.forward*forward*350f);
+                rigidbody.AddForce(new Quaternion(0f,jumpDirection.rotation.y,0f,jumpDirection.rotation.w)*rigidbody.transform.forward*forward*200f);
                 jumpBeingPrepared = false;
                 jumpPower = 0f;
             }
@@ -109,7 +109,17 @@ public class FrogController : MonoBehaviour
     {
         //transform.rotation=Quaternion.Slerp(transform.rotation,Quaternion.Euler(0f,0f,1f),Time.deltaTime);
         //rigidbody.angularVelocity = Quaternion.ToEulerAngles(Quaternion.Slerp(transform.rotation,Quaternion.Euler(0f,0f,1f),Time.deltaTime));
+        
         float forward = Input.GetAxis("Vertical");
+
+        if(forward != 0f && IsNotColliding)
+        {
+
+            Vector3 moveVector = new Vector3(0f,0f,forward);
+            moveVector = new Quaternion(0f,jumpDirection.rotation.y,0f,jumpDirection.rotation.w)*moveVector;
+            rigidbody.AddForce(moveVector*30f*Time.deltaTime);
+        }
+
         if(forward != 0f &&  !IsNotColliding && jumpPower ==0f)
         {
             //rigidbody.AddForce(-new Vector3(rigidbody.velocity.x,0f,rigidbody.velocity.z)*rigidbody.mass*Time.deltaTime);
