@@ -7,7 +7,7 @@ public class LevelLoader : MonoBehaviour
     //Upon collision with another GameObject, this GameObject will reverse direction
     private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene("Assets/Scenes/Beach.unity");
+        SceneManager.LoadScene("Assets/Scenes/Beach Scene.unity");
     }
 
 }

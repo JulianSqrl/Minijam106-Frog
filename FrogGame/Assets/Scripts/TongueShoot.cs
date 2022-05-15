@@ -7,7 +7,6 @@ public class TongueShoot : MonoBehaviour
 {
 
 
-    public AudioSource tongueSound;
 
     bool grappling = false;
 
@@ -126,7 +125,6 @@ public class TongueShoot : MonoBehaviour
         //print(cameraReference.position);
         if(Physics.Raycast(origin:cameraReference.position,direction:cameraReference.forward,out hit,tongueLength,TongueAtachable) && !grappling)
         {
-            tongueSound.Play();
             joint=playerReference.gameObject.AddComponent<SpringJoint>();
 
 

@@ -7,6 +7,7 @@ public class FrogController : MonoBehaviour
 {
     //for UI purposes
     public int fliesCaught;
+    public int totalFlies;
 
     public AudioSource tongueSound;
 
@@ -81,12 +82,14 @@ public class FrogController : MonoBehaviour
     
     void FrogJump()
     {
+        
         if(Input.GetAxis("Jump")!= 0f)
         {
             jumpBeingPrepared = true;
             if(jumpPower + Time.deltaTime >1f)
             {
-                jumpPower = 1f+(fliesCaught);
+                //this is so jump height proportional to whatever
+                jumpPower = 1f+0.5f*(fliesCaught/totalFlies);
             }
             else
             {
@@ -105,6 +108,7 @@ public class FrogController : MonoBehaviour
                 jumpPower = 0f;
             }
         }
+        
 
     }
 

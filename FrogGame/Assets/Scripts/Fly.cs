@@ -35,6 +35,7 @@ public class Fly : MonoBehaviour
         if(player != null)
         {
             player.fliesCaught += 1;
+            player.totalFlies = numberOfFlies;
             Destroy(this.gameObject);
         }
     }
