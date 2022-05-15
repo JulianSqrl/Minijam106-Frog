@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class FrogController : MonoBehaviour
 {
+    //for UI purposes
+    public int fliesCaught;
+
+
+
     //ref to rigidbody
     public Rigidbody rigidbody;
 
@@ -24,7 +29,7 @@ public class FrogController : MonoBehaviour
 
 
     //this should reset to zero on release
-    float jumpPower = 0f;
+    public float jumpPower = 0f;
 
 
     void Start()
@@ -64,7 +69,7 @@ public class FrogController : MonoBehaviour
     {
         if(IsNotColliding)
         {
-            
+
         }
     }
 
