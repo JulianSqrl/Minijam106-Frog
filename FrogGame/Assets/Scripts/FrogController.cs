@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class FrogController : MonoBehaviour
 {
+    //for UI purposes
+    public int fliesCaught;
+
+
+
     //ref to rigidbody
     public Rigidbody rigidbody;
 
@@ -13,6 +18,9 @@ public class FrogController : MonoBehaviour
     //this is so that the car knows when to drive
     private int collisionCount = 0;
 
+
+    bool ShortenTongue = false;
+    bool jumpBeingPrepared = false;
     
  
     public bool IsNotColliding
@@ -22,7 +30,7 @@ public class FrogController : MonoBehaviour
 
 
     //this should reset to zero on release
-    float jumpPower = 0f;
+    public float jumpPower = 0f;
 
 
     void Start()
@@ -35,6 +43,35 @@ public class FrogController : MonoBehaviour
     {
         FrogJump();
         FrogMove();
+        FrogAirMove();
+
+        if(ShortenTongue && !IsNotColliding)
+        {
+            //this is so that grapple shorten works
+            rigidbody.AddForce(new Vector3(0f,0.1f,0f));
+            
+        }
+
+        if(Input.GetMouseButtonDown(1) )
+        {
+            ShortenTongue = true;
+
+        }
+        if(Input.GetMouseButtonUp(1))
+        {
+            ShortenTongue = false;
+
+        }
+
+    }
+
+
+    void FrogAirMove()
+    {
+        if(IsNotColliding)
+        {
+
+        }
     }
 
     
@@ -42,9 +79,10 @@ public class FrogController : MonoBehaviour
     {
         if(Input.GetAxis("Jump")!= 0f)
         {
+            jumpBeingPrepared = true;
             if(jumpPower + Time.deltaTime >1f)
             {
-                jumpPower = 1f;
+                jumpPower = 1f+(fliesCaught);
             }
             else
             {
@@ -53,9 +91,13 @@ public class FrogController : MonoBehaviour
         }
         else
         {
-            if(!IsNotColliding)
+            if(!IsNotColliding && jumpBeingPrepared == true)
             {
+                float forward = Input.GetAxis("Vertical");
+
                 rigidbody.AddForce(new Vector3(0f,1f,0f)*jumpPower*600f);
+                rigidbody.AddForce(new Quaternion(0f,jumpDirection.rotation.y,0f,jumpDirection.rotation.w)*rigidbody.transform.forward*forward*350f);
+                jumpBeingPrepared = false;
                 jumpPower = 0f;
             }
         }
@@ -70,16 +112,37 @@ public class FrogController : MonoBehaviour
         float forward = Input.GetAxis("Vertical");
         if(forward != 0f &&  !IsNotColliding && jumpPower ==0f)
         {
-            rigidbody.AddForce(-new Vector3(rigidbody.velocity.x,0f,rigidbody.velocity.z)*rigidbody.mass);
+            //rigidbody.AddForce(-new Vector3(rigidbody.velocity.x,0f,rigidbody.velocity.z)*rigidbody.mass*Time.deltaTime);
 
             //get the forward vector and then apply upward force if colliding
             Vector3 jumpVector = new Vector3(0f,0.2f,0.8f).normalized;
-            //this rotates this to fit the cameras direction
+            if(forward > 0)
+            {
+                jumpVector = new Vector3(0f,0.3f,0.8f).normalized;
+
+            }
+            else if(forward < 0)
+            {
+                jumpVector = new Vector3(0f,0.3f,-0.8f).normalized;
+            }
+            //this rotates this to fit the cameras direction 
             jumpVector = new Quaternion(0f,jumpDirection.rotation.y,0f,jumpDirection.rotation.w)*jumpVector;
+
+            if(rigidbody.velocity.magnitude > 8f)
+            {
+                jumpVector = new Vector3(0f,jumpVector.y,0f);
+            }
+
+            
 
             //vector = Quaternion.AngleAxis(-45, Vector3.up) * vector;
             rigidbody.AddForce(jumpVector*10f);
             
+        }
+
+        if(forward == 0 && !IsNotColliding)
+        {
+            rigidbody.AddForce(-new Vector3(rigidbody.velocity.x,0f,rigidbody.velocity.z)*rigidbody.mass);
         }
     }
 

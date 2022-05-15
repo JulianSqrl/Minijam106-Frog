@@ -23,6 +23,10 @@ public class TongueShoot : MonoBehaviour
     SpringJoint joint;
 
 
+    bool activateGrapple = false;
+    bool ShortenTongue = false;
+
+
 
     void Awake()
     {
@@ -37,16 +41,42 @@ public class TongueShoot : MonoBehaviour
     void Update()
     {
 
-
         //this defines when the grapple is shot
         if(Input.GetMouseButtonDown(0))
         {
-            StartGrapple();
+            
+            if(!grappling)
+            {
+                StartGrapple();
+            }
+            else
+            {
+                StopGrapple();
+            }
         }
-        else if (Input.GetMouseButtonUp(0))
+
+
+        if(ShortenTongue)
         {
-            StopGrapple();
+            if(grappling)
+            {
+                joint.maxDistance -= Time.deltaTime*10f;
+            }
         }
+
+        if(Input.GetMouseButtonDown(1) )
+        {
+            ShortenTongue = true;
+
+        }
+        if(Input.GetMouseButtonUp(1))
+        {
+            ShortenTongue = false;
+
+        }
+
+
+        
 
     }
 
@@ -86,17 +116,13 @@ public class TongueShoot : MonoBehaviour
 
     void StartGrapple()
     {
+        float tongueLength = 50f;
         //print(cameraReference.forward);
         RaycastHit hit;
         //print(cameraReference.position);
-        if(Physics.Raycast(origin:cameraReference.position,direction:cameraReference.forward,out hit,300f,TongueAtachable))
+        if(Physics.Raycast(origin:cameraReference.position,direction:cameraReference.forward,out hit,tongueLength,TongueAtachable) && !grappling)
         {
-            SpringJoint joint;
-            //this is so the stop grapple has no errors
-            if(playerReference.gameObject.TryGetComponent<SpringJoint>(out joint) == false)
-            {
-                joint=playerReference.gameObject.AddComponent<SpringJoint>();
-            }
+            joint=playerReference.gameObject.AddComponent<SpringJoint>();
 
 
             swingPosition = hit.point;
@@ -105,11 +131,11 @@ public class TongueShoot : MonoBehaviour
 
             float tongueDistance = Vector3.Distance(playerReference.position,swingPosition);
 
-            joint.maxDistance = tongueDistance*0.8f;
-            joint.minDistance = tongueDistance *0.25f;
+            joint.maxDistance = hit.distance;
+            joint.minDistance = 0f;
 
-            joint.spring = 4.5f;
-            joint.damper = 7f;
+            joint.spring = 10f;
+            joint.damper = 2f;
             joint.massScale = 4.5f;
             
             //so the line renderer can work properlly
@@ -119,17 +145,20 @@ public class TongueShoot : MonoBehaviour
         }
     }
 
+
+
     void StopGrapple()
     {
-        //so the tongue derenders
         lineRenderer.positionCount = 0;
-
-
+        print(joint);
+        Destroy(joint);
+        /*
         if(playerReference.gameObject.TryGetComponent<SpringJoint>(out joint))
         {
             joint.breakForce = 0f;
             joint = null;
         }
+        */
 
         grappling = false;
     }
