@@ -13,6 +13,8 @@ public class FrogController : MonoBehaviour
     //this is so that the car knows when to drive
     private int collisionCount = 0;
 
+
+    bool ShortenTongue = false;
     
  
     public bool IsNotColliding
@@ -35,6 +37,35 @@ public class FrogController : MonoBehaviour
     {
         FrogJump();
         FrogMove();
+        FrogAirMove();
+
+        if(ShortenTongue && !IsNotColliding)
+        {
+            //this is so that grapple shorten works
+            rigidbody.AddForce(new Vector3(0f,0.1f,0f));
+            
+        }
+
+        if(Input.GetMouseButtonDown(1) )
+        {
+            ShortenTongue = true;
+
+        }
+        if(Input.GetMouseButtonUp(1))
+        {
+            ShortenTongue = false;
+
+        }
+
+    }
+
+
+    void FrogAirMove()
+    {
+        if(IsNotColliding)
+        {
+            
+        }
     }
 
     

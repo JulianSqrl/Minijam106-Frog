@@ -16,6 +16,16 @@ public class SmoothCamera : MonoBehaviour
 
 
 
+    //this is so that the camera knows when colliding
+    private int collisionCount = 0;
+    public bool IsNotColliding
+    {
+        get { return collisionCount == 0; }
+    }
+
+
+
+
     Quaternion newRotation;
     float xRotation = 0f;
 
@@ -61,4 +71,7 @@ public class SmoothCamera : MonoBehaviour
 
         
     }
+
+
+
 }

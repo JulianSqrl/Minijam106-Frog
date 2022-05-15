@@ -24,6 +24,7 @@ public class TongueShoot : MonoBehaviour
 
 
     bool activateGrapple = false;
+    bool ShortenTongue = false;
 
 
 
@@ -53,6 +54,29 @@ public class TongueShoot : MonoBehaviour
                 StopGrapple();
             }
         }
+
+
+        if(ShortenTongue)
+        {
+            if(grappling)
+            {
+                joint.maxDistance -= Time.deltaTime*10f;
+            }
+        }
+
+        if(Input.GetMouseButtonDown(1) )
+        {
+            ShortenTongue = true;
+
+        }
+        if(Input.GetMouseButtonUp(1))
+        {
+            ShortenTongue = false;
+
+        }
+
+
+        
 
     }
 
@@ -92,7 +116,7 @@ public class TongueShoot : MonoBehaviour
 
     void StartGrapple()
     {
-        float tongueLength = 30f;
+        float tongueLength = 50f;
         //print(cameraReference.forward);
         RaycastHit hit;
         //print(cameraReference.position);
