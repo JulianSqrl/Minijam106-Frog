@@ -7,6 +7,7 @@ public class GameUI : MonoBehaviour
     public KeyCode PauseKey = KeyCode.Escape;
     public bool isPaused = false;
      public GameObject PauseMenu;
+    public GameObject PLayerUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,11 +40,13 @@ public class GameUI : MonoBehaviour
         Time.timeScale =  0;
         isPaused = true;
         PauseMenu.SetActive(true);
+        PLayerUI.SetActive(false);
     }
     public  void Resume()
     {
         Time.timeScale = 1;
         PauseMenu.SetActive(false);
+        PLayerUI.SetActive(true);
         isPaused = false;
     }
 }

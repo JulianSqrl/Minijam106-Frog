@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.08172746, g: 0.1938215, b: 0.28276137, a: 1}
+  m_IndirectSpecularColor: {r: 0.3046184, g: 0.46189642, b: 0.5514134, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8346,6 +8346,35 @@ PrefabInstance:
     - target: {fileID: 608302998617979432, guid: 6428e848f60c70b4eb73a8ef3f2b69d1, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 608302998919523394, guid: 6428e848f60c70b4eb73a8ef3f2b69d1, type: 3}
+      propertyPath: m_text
+      value: "\n  WASD To Move.\n\n  Left Mouse Click To stick out Tounge.\n  Press
+        again to release it.\n\n Spacebar to jump. Hold for higher  jump."
+      objectReference: {fileID: 0}
+    - target: {fileID: 608302998919523395, guid: 6428e848f60c70b4eb73a8ef3f2b69d1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 608302998919523395, guid: 6428e848f60c70b4eb73a8ef3f2b69d1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 608302998919523395, guid: 6428e848f60c70b4eb73a8ef3f2b69d1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 608302998919523395, guid: 6428e848f60c70b4eb73a8ef3f2b69d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 608302998919523395, guid: 6428e848f60c70b4eb73a8ef3f2b69d1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 608302998919523395, guid: 6428e848f60c70b4eb73a8ef3f2b69d1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6428e848f60c70b4eb73a8ef3f2b69d1, type: 3}
