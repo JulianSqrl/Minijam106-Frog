@@ -103,7 +103,7 @@ public class FrogController : MonoBehaviour
                 float forward = Input.GetAxis("Vertical");
 
                 rigidbody.AddForce(new Vector3(0f,1f,0f)*jumpPower*600f);
-                rigidbody.AddForce(new Quaternion(0f,jumpDirection.rotation.y,0f,jumpDirection.rotation.w)*rigidbody.transform.forward*forward*200f);
+                rigidbody.AddForce(new Quaternion(0f,jumpDirection.rotation.y,0f,jumpDirection.rotation.w)*rigidbody.transform.forward*forward*-500f);
                 jumpBeingPrepared = false;
                 jumpPower = 0f;
             }
