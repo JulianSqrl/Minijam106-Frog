@@ -9,9 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 69036b108f5c8624f955f25f4c77201b
   - enabled: 1
-    path: Assets/Scenes/LevelOneEdits.unity
-    guid: 61b6b985d2a5ed84784f9b5eab3a1434
+    path: Assets/Scenes/LevelOneV2.unity
+    guid: 07f71085f156915409c1eae0f98dfdce
   - enabled: 1
     path: Assets/Scenes/Beach Scene.unity
     guid: a5b54f8cd29f729418f898ce4f690f58
+  - enabled: 1
+    path: Assets/Scenes/Didn't FindAnythingscene.unity
+    guid: ea8a9f2ced9604549bf13000e6e2185c
+  - enabled: 1
+    path: Assets/Scenes/Lose.unity
+    guid: 42a8bdf3c1aa1e741a11e2ff71349912
   m_configObjects: {}

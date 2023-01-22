@@ -50,6 +50,7 @@ public class TongueShoot : MonoBehaviour
             
             if(!grappling)
             {
+
                 StartGrapple();
             }
             else

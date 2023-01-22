@@ -12,7 +12,7 @@ public class Lose : MonoBehaviour
         count -= Time.deltaTime;
         if(count <0)
         {
-            SceneManager.LoadScene("Assets/Scenes/Didn't FindAnythingscene.unity");
+            SceneManager.LoadScene(4);
 
         }
     }
