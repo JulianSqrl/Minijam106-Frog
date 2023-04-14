@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 
 public class TongueShoot : MonoBehaviour
 {
-    public GameUI pauseManager;
+
 
 
     bool grappling = false;
@@ -43,10 +43,9 @@ public class TongueShoot : MonoBehaviour
 
     void Update()
     {
-        if(!pauseManager.isPaused)
-        { 
-            //this defines when the grapple is shot
-            if (Input.GetMouseButtonDown(0))
+
+        //this defines when the grapple is shot
+        if(Input.GetMouseButtonDown(0))
         {
             
             if(!grappling)
@@ -81,7 +80,7 @@ public class TongueShoot : MonoBehaviour
         }
 
 
-        }
+        
 
     }
 
