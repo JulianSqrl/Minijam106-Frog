@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FrogCameraController : MonoBehaviour
 {
-
+    public GameUI pauseManager;
     public float mouseSensitivity = 100f;
 
     public Transform playerTransform;
@@ -23,22 +23,24 @@ public class FrogCameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime*mouseSensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime*mouseSensitivity;
+        if (!pauseManager.isPaused)
+        {
+            float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * mouseSensitivity;
+            float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * mouseSensitivity;
 
 
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation,-90f,90f);
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        yRotation += mouseX;
-
-
-        playerTransform.transform.localRotation = Quaternion.Euler(xRotation,yRotation,0f);
-        //playerTransform.Rotate(playerTransform.up*mouseX);
-        //playerTransform.Rotate(Vector3.up*mouseX);
+            yRotation += mouseX;
 
 
+            playerTransform.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+            //playerTransform.Rotate(playerTransform.up*mouseX);
+            //playerTransform.Rotate(Vector3.up*mouseX);
 
+
+        }
         
     }
 }
