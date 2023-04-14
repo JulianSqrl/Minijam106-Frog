@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class ClosePrompt : MonoBehaviour
 {
-  public KeyCode promptclose = KeyCode.X;
-  bool read = false;
+    public GameUI pauseManager;
+    public KeyCode promptclose = KeyCode.X;
+  bool     read = false;
   public   GameObject Prompt;
-  public GameObject[] Game_play_UI;
+  public   GameObject[] Game_play_UI;
+    void Awake()
+    {
+        pauseManager.SetPause(true);
+        Cursor.lockState = CursorLockMode.None;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -21,15 +27,31 @@ public class ClosePrompt : MonoBehaviour
         {
             if (Input.GetKeyDown(promptclose))
             {
-                Prompt.SetActive(false);
-                foreach (var item in Game_play_UI)
-                {
-                    item.SetActive(true);
-                }
 
-                read = true;
+                Close();
             }
         }
    
+    }
+    void Close()
+    {
+        if (read == false)
+        {
+            foreach (var item in Game_play_UI)
+            {
+                item.SetActive(true);
+            }
+            read = true;
+            pauseManager.CanPause = true;
+            pauseManager.SetPause(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            Prompt.SetActive(false);
+        }
+    }
+    public void WindowClose()
+    {
+        Close();
+    
+        
     }
 }
