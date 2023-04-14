@@ -7,7 +7,7 @@ public class TongueShoot : MonoBehaviour
 {
 
 
-
+    public GameUI pauseManager;
     bool grappling = false;
 
     public LineRenderer lineRenderer;
@@ -43,44 +43,45 @@ public class TongueShoot : MonoBehaviour
 
     void Update()
     {
-
-        //this defines when the grapple is shot
-        if(Input.GetMouseButtonDown(0))
+        if (!pauseManager.isPaused)
         {
-            
-            if(!grappling)
+            //this defines when the grapple is shot
+            if (Input.GetMouseButtonDown(0))
             {
 
-                StartGrapple();
+                if (!grappling)
+                {
+
+                    StartGrapple();
+                }
+                else
+                {
+                    StopGrapple();
+                }
             }
-            else
+
+
+            if (ShortenTongue)
             {
-                StopGrapple();
+                if (grappling)
+                {
+                    joint.maxDistance -= Time.deltaTime * 10f;
+                }
             }
-        }
 
-
-        if(ShortenTongue)
-        {
-            if(grappling)
+            if (Input.GetMouseButtonDown(1))
             {
-                joint.maxDistance -= Time.deltaTime*10f;
+                ShortenTongue = true;
+
             }
-        }
+            if (Input.GetMouseButtonUp(1))
+            {
+                ShortenTongue = false;
 
-        if(Input.GetMouseButtonDown(1) )
-        {
-            ShortenTongue = true;
+            }
 
-        }
-        if(Input.GetMouseButtonUp(1))
-        {
-            ShortenTongue = false;
 
         }
-
-
-        
 
     }
 

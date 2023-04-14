@@ -5,6 +5,8 @@ using UnityEngine.Audio;
 
 public class FrogController : MonoBehaviour
 {
+    public GameUI pauseManager;
+
     //for UI purposes
     public int fliesCaught;
     public int totalFlies;
@@ -46,28 +48,30 @@ public class FrogController : MonoBehaviour
 
     void Update()
     {
-        FrogJump();
-        FrogMove();
-        FrogAirMove();
-
-        if(ShortenTongue && !IsNotColliding)
+        if (!pauseManager.isPaused)
         {
-            //this is so that grapple shorten works
-            rigidbody.AddForce(new Vector3(0f,0.1f,0f));
-            
+            FrogJump();
+            FrogMove();
+            FrogAirMove();
+
+            if (ShortenTongue && !IsNotColliding)
+            {
+                //this is so that grapple shorten works
+                rigidbody.AddForce(new Vector3(0f, 0.1f, 0f));
+
+            }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                ShortenTongue = true;
+
+            }
+            if (Input.GetMouseButtonUp(1))
+            {
+                ShortenTongue = false;
+
+            }
         }
-
-        if(Input.GetMouseButtonDown(1) )
-        {
-            ShortenTongue = true;
-
-        }
-        if(Input.GetMouseButtonUp(1))
-        {
-            ShortenTongue = false;
-
-        }
-
     }
 
 
