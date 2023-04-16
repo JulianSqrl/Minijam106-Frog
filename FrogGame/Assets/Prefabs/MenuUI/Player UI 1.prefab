@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 6093060427957473644}
   - component: {fileID: 8074737557057044967}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text (TMP curr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 0/0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -169,8 +169,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 296.53
-  m_fontSizeBase: 296.53
+  m_fontSize: 180
+  m_fontSizeBase: 180
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -323,7 +323,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -64, y: -38}
+  m_AnchoredPosition: {x: -117, y: -77}
   m_SizeDelta: {x: 1024, y: 512}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &721559728612904897
@@ -429,7 +429,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 118.2, y: 107.24}
+  m_AnchoredPosition: {x: 98, y: 100}
   m_SizeDelta: {x: 76.8949, y: 139.60889}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &7963575955213831967

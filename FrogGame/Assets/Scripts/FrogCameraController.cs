@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FrogCameraController : MonoBehaviour
 {
-    public GameUI pauseManager;
+ 
     public float mouseSensitivity = 100f;
 
     public Transform playerTransform;
@@ -23,7 +23,7 @@ public class FrogCameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!pauseManager.isPaused)
+        if (!GameManager.Instance.isPaused)
         {
             float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * mouseSensitivity;
             float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * mouseSensitivity;

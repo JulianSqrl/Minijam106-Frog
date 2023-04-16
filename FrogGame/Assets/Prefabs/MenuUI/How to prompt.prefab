@@ -66,14 +66,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '1 . Collect  Flys before the time runs out.
-
-
-    2. Make your way to
-    the Beach.
-
-
-    Press X to Close '
+  m_text: "1 . Collect  Flys before the time runs out.\n\n2. Make your way to the
+    Beach.\n\n             Press X to Close "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 27979efd50fa649409d51d1f1c181dd9, type: 2}
   m_sharedMaterial: {fileID: -268924197257966065, guid: 27979efd50fa649409d51d1f1c181dd9, type: 2}
@@ -309,8 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e7231113e41f64f8e2d2b558bae0eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseManager: {fileID: 0}
-  promptclose: 120
+  promptClose: 120
   Prompt: {fileID: 6744186427695646165}
   Game_play_UI:
   - {fileID: 0}

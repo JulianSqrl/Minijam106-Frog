@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 
 public class FrogController : MonoBehaviour
 {
-    public GameUI pauseManager;
+   
 
     //for UI purposes
     public int fliesCaught;
@@ -42,13 +42,14 @@ public class FrogController : MonoBehaviour
 
     void Start()
     {
+        GameManager.Instance.PlayerControler = this;
         rigidbody.freezeRotation = true;
         
     }
 
     void Update()
     {
-        if (!pauseManager.isPaused)
+        if (!GameManager.Instance.isPaused)
         {
             FrogJump();
             FrogMove();
